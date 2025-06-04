@@ -6,7 +6,7 @@ on:
       - prod
 
 env:
-  REGION: us-west1
+  REGION: us
   IMAGE_NAME: ${{ vars.PROD_DOCKER_IMAGE }}
 
 jobs:
