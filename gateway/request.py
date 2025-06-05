@@ -107,14 +107,7 @@ class GatewayRequest(BaseGatewayRequest):
         # create a client for performing data requests
         client = SwaggerClient(spec, self.request)
 
-        # --- FIX: Map 'pk' to 'id' for downstream Swagger spec ---
-        url_kwargs = self.url_kwargs.copy()
-        if 'pk' in url_kwargs:
-            url_kwargs['id'] = url_kwargs.pop('pk')
-        # --------------------------------------------------------
-
-        # perform a service data request
-        content, status_code, headers = client.request(**url_kwargs)
+        content, status_code, headers = client.request(**self.url_kwargs)
 
         # calls to individual service as per relationship
         # call to join record insertion method
